@@ -1,0 +1,26 @@
+.books {
+    height: 100dvh;
+}
+
+.title {
+    position: relative;
+    width: 100dvw;
+    display: grid;
+    grid-template-columns: 0.4fr 0.6fr 1fr; 
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.titleText {
+    color: white;
+    font-size: 125px;
+    grid-area: 1 / 2 / 2 / 3;
+    font-weight: bolder;
+}
+
+.carousel {
+    margin-top: 2000px;
+}
+
+
