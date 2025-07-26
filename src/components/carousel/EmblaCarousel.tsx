@@ -36,8 +36,7 @@ const EmblaCarousel: React.FC<PropType> = ({ books, options }) => {
           {books.map((book, index) => (
             <div className="embla__slide" key={index}>
               <div className="book-card">
-                <div className="book-image-container">
-                  <img src={book.imageUrl} alt={book.title} className="book-image" />
+                <div className="book-image-container" style={{backgroundImage: `url(${book.imageUrl})`}}>
                 </div>
                 <div className="book-content">
                   <h2 className="book-title">{book.title}</h2>
@@ -50,7 +49,7 @@ const EmblaCarousel: React.FC<PropType> = ({ books, options }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Buy Now
+                    BUY NOW
                   </a>
                 </div>
               </div>
