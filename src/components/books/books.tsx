@@ -1,35 +1,68 @@
-"use client"
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import styles from "./books.module.css";
-import useEmblaCarousel from 'embla-carousel-react'
-import EmblaCarousel from '../carousel/EmblaCarousel'
-import '../emblaCss/embla.css'
 
 export default function Books() {
-  const [emblaRef] = useEmblaCarousel()
-  const OPTIONS = { slidesToScroll: 'auto', loop: true }
-  const SLIDE_COUNT = 5
-  const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const books = [
     {
-      title: 'When the Loop Breaks',
-      imageUrl: '/books/whentheloopbreaks.png',
-      buyLink: 'https://example.com/book1',
-      description: '“The truth is — everything is just story.”'
+      title: "When the Loop Breaks",
+      imageUrl: "/books/whentheloopbreaks.png",
+      description: "“The truth is — everything is just story.”",
     },
     {
-      title: 'Something Knew',
-      imageUrl: '/books/SomethingKnew.png',
-      buyLink: 'https://example.com/book2',
-      description: 'The System is Glitching'
-    }
-  ]
+      title: "Something Knew",
+      imageUrl: "/books/SomethingKnew.png",
+      description: "The System is Glitching",
+    },
+  ];
+
+  // helper: slugify book titles
+  const slugify = (text) =>
+    text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+
   return (
     <div className={styles.books}>
       <div className={styles.title} id="books">
-          <h1 className={styles.titleText}><strong>BOOKS</strong></h1>
+        <h1 className={styles.titleText}>
+          <strong>BOOKS</strong>
+        </h1>
       </div>
-      <EmblaCarousel className={styles.carousel} slides={SLIDES} books={books} options={OPTIONS} />
+
+      <div className={styles.grid}>
+        {loading
+          ? Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className={styles.skeletonCard}>
+                <div className={styles.skeletonImage}></div>
+                <div className={styles.skeletonText}></div>
+                <div className={styles.skeletonTextSmall}></div>
+              </div>
+            ))
+          : books.map((book, i) => (
+              <Link
+                key={i}
+                href={`/book/${slugify(book.title)}`}
+                className={styles.bookCard}
+              >
+                <img
+                  src={book.imageUrl}
+                  alt={book.title}
+                  className={styles.bookImage}
+                />
+                <h2>{book.title}</h2>
+                <p>{book.description}</p>
+              </Link>
+            ))}
+      </div>
     </div>
   );
 }

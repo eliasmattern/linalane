@@ -1,7 +1,25 @@
 'use client';
 import styles from "./header.module.css";
+import { useEffect } from "react";
 
 export default function Header() {
+  useEffect(() => {
+    const handleWheel = (event) => {
+      if (window.scrollY === 0 && event.deltaY > 0) {
+        event.preventDefault();
+        const booksSection = document.querySelector("#books");
+        if (booksSection) {
+          booksSection.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+  
   return (
     <>
       <div className={styles.header}>
