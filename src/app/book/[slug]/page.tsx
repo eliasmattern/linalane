@@ -18,10 +18,17 @@ interface Book {
   details: BookDetails;
 }
 
+interface Params {
+  params: {
+    slug: string;
+  };
+}
+
+
 const slugify = (text: string) =>
   text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
-function loadBooks() {
+function loadBooks(): Book[] {
   const filePath = path.join(process.cwd(), "public", "books/books.json");
   const raw = fs.readFileSync(filePath, "utf8");
   const data = JSON.parse(raw);
@@ -33,8 +40,8 @@ export async function generateStaticParams() {
   return books.map((b) => ({ slug: slugify(b.title) }));
 }
 
-export async function generateMetadata({ params }: any) {
-  const { slug } = await params; // ✅ await params
+export async function generateMetadata({ params }: Params) {
+  const { slug } = await params; 
   const books = loadBooks();
   const book = books.find((b) => slugify(b.title) === slug);
 
@@ -52,8 +59,8 @@ export async function generateMetadata({ params }: any) {
   };
 }
 
-export default async function BookPage({ params }: any) {
-  const { slug } = await params; // ✅ await params
+export default async function BookPage({ params }: Params) {
+  const { slug } = await params; 
   const books = loadBooks();
   const book = books.find((b) => slugify(b.title) === slug);
 
