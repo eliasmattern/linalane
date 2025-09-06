@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 export default function Header({ featuredBook }) {
-  const slugify = (text) =>
+  const slugify = (text: string) =>
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
   useEffect(() => {
-    const handleWheel = (event) => {
+    const handleWheel = (event: any) => {
       if (window.scrollY === 0 && event.deltaY > 0) {
         event.preventDefault();
         const booksSection = document.querySelector("#books");

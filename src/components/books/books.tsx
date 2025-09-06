@@ -35,7 +35,7 @@ export default function Books() {
     loadBooks();
   }, []);
 
-  const slugify = (text) =>
+  const slugify = (text: string) =>
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
   return (
