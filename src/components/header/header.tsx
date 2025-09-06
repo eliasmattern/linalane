@@ -3,7 +3,13 @@ import styles from "./header.module.css";
 import { useEffect } from "react";
 import Link from "next/link";
 
-export default function Header({ featuredBook }) {
+interface FeaturedBook { name: string, imageUrl: string }
+
+interface PageProps {
+  featuredBook: FeaturedBook
+}
+
+export default function Header({ featuredBook }: PageProps) {
   const slugify = (text: string) =>
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
@@ -23,7 +29,7 @@ export default function Header({ featuredBook }) {
       window.removeEventListener("wheel", handleWheel);
     };
   }, []);
-  
+
   return (
     <div className={styles.header}>
       <div className={styles.title}>
