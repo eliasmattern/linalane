@@ -14,7 +14,7 @@ export default function Header({ featuredBook }: PageProps) {
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
   useEffect(() => {
-    const handleWheel = (event: any) => {
+    const handleWheel = (event: WheelEvent) => {
       if (window.scrollY === 0 && event.deltaY > 0) {
         event.preventDefault();
         const booksSection = document.querySelector("#books");
