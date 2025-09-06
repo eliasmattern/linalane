@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import Header from "../components/header/header";
+import Footer from "../components/footer/footer";
 import Books from "../components/books/books";
 
 interface FeaturedBook { name: string, imageUrl: string}
@@ -13,6 +14,7 @@ export default function Home() {
     <div>
       <Header featuredBook={featuredBook}></Header>
       <Books/>
+      <Footer/>
     </div>
   );
 }

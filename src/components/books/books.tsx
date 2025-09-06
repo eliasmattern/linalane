@@ -39,8 +39,8 @@ export default function Books() {
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 
   return (
-    <div className={styles.books}>
-      <div className={styles.title} id="books">
+    <div className={styles.books} id="books">
+      <div className={styles.title} >
         <h1 className={styles.titleText}>
           <strong>BOOKS</strong>
         </h1>

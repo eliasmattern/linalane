@@ -1,0 +1,9 @@
+.footer {
+    display: flex;
+    width: 100dvw;
+    justify-content: right;
+}
+
+.footerItem {
+    margin: 2em;
+}

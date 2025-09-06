@@ -19,7 +19,7 @@ export default function Header({ featuredBook }: PageProps) {
         event.preventDefault();
         const booksSection = document.querySelector("#books");
         if (booksSection) {
-          booksSection.scrollIntoView({ behavior: "smooth" });
+      booksSection.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
         }
       }
     };
