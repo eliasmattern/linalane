@@ -80,8 +80,13 @@
 
 .filterContainer {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 1rem 20em;
+}
+
+.searchInput {
+  width: 100%;
 }
 
 .filterSelect {
@@ -111,6 +116,7 @@
   .grid {
     margin: 2em 10em;
   }
+
   .filterContainer {
     margin: 1rem 10em;
   }
@@ -126,6 +132,20 @@
     justify-content: center;
   }
 }
+
+@media only screen and (max-width: 750px) {
+  .filterContainer {
+    margin: 1rem 2em;
+    flex-direction: column;
+  }
+
+  .searchInput {
+    height: 3em;
+    margin-bottom: 1em;
+  }
+
+}
+
 
 @media only screen and (max-width: 500px) {
   .grid {
