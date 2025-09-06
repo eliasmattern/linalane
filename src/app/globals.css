@@ -38,3 +38,10 @@ a {
     color-scheme: dark;
   }
 }
+
+select {
+  padding-right: 12.5rem; /* reduce right padding */
+  background-position: right 0.5rem center; /* move arrow closer */
+  background-repeat: no-repeat;
+  background-size: 1rem auto;
+}

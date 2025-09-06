@@ -1,19 +1,18 @@
-
 .title {
-    position: relative;
-    width: 100dvw;
-    display: grid;
-    grid-template-columns: 0.4fr 0.6fr 1fr; 
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+  position: relative;
+  width: 100dvw;
+  display: grid;
+  grid-template-columns: 0.4fr 0.6fr 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
 .titleText {
-    color: white;
-    font-size: 125px;
-    grid-area: 1 / 2 / 2 / 3;
-    font-weight: bolder;
+  color: white;
+  font-size: 125px;
+  grid-area: 1 / 2 / 2 / 3;
+  font-weight: bolder;
 }
 
 .books {
@@ -79,10 +78,29 @@
   width: 70%;
 }
 
+.filterContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 1rem 20em;
+}
+
+.filterSelect {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: #222;
+  color: white;
+  border: 1px solid #444;
+  cursor: pointer;
+}
+
+
+
 @keyframes shimmer {
   0% {
     background-position: -400px 0;
   }
+
   100% {
     background-position: 400px 0;
   }
@@ -91,33 +109,47 @@
 
 @media only screen and (max-width: 1600px) {
   .grid {
-  margin: 2em 10em;
-}
+    margin: 2em 10em;
+  }
+  .filterContainer {
+    margin: 1rem 10em;
+  }
 }
 
 @media only screen and (max-width: 900px) {
   .grid {
-  margin: 2em 5em;
-}
+    margin: 2em 5em;
+  }
+
+  .filterContainer {
+    margin: 1rem 5em;
+    justify-content: center;
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .grid {
-  margin: 0 2em;
-  width: fit-content;
-}
-.books {
-  padding: 2rem 0;
-  min-height: 100dvh;
-}
-.titleText {
+    margin: 0 2em;
+    width: fit-content;
+  }
+
+  .books {
+    padding: 2rem 0;
+    min-height: 100dvh;
+  }
+
+  .titleText {
     font-size: 65px;
     text-align: center;
-}
+  }
 
-.title {
+  .title {
     position: relative;
     display: block;
     width: 100dvw;
-}
+  }
+
+  .filterContainer {
+    margin: 1rem 2em;
+  }
 }
