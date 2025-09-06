@@ -18,11 +18,7 @@ interface Book {
   details: BookDetails;
 }
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
+type PageProps = Promise<{ slug: string }>
 
 
 const slugify = (text: string) =>
@@ -40,8 +36,9 @@ export async function generateStaticParams() {
   return books.map((b) => ({ slug: slugify(b.title) }));
 }
 
-export async function generateMetadata({ params }: PageProps) {
-  const { slug } = params; 
+export async function generateMetadata(props: { params: PageProps }) {
+  const params = await props.params;
+  const slug = params.slug;
   const books = loadBooks();
   const book = books.find((b) => slugify(b.title) === slug);
 
@@ -59,8 +56,9 @@ export async function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default async function BookPage({ params }: PageProps) {
-  const { slug } = params; 
+export default async function BookPage(props: { params: PageProps }) {
+  const params = await props.params;
+  const slug = params.slug;
   const books = loadBooks();
   const book = books.find((b) => slugify(b.title) === slug);
 
