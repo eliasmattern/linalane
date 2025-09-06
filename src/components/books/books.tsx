@@ -3,30 +3,38 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./books.module.css";
 
+interface BookDetails {
+  longDescription: string
+  buyLink?: string
+}
+
+interface Book {
+  title: string,
+  imageUrl: string,
+  description: string
+  details: BookDetails
+}
+
 export default function Books() {
   const [loading, setLoading] = useState(true);
+  const [books, setBooks] = useState([] as Book[]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    const loadBooks = async () => {
+      try {
+        const res = await fetch("/books/books.json");
+        const data = await res.json();
+        setBooks(data);
+      } catch (err) {
+        console.error("Failed to load books:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadBooks();
   }, []);
 
-  const books = [
-    {
-      title: "When the Loop Breaks",
-      imageUrl: "/book-covers/whentheloopbreaks.png",
-      description: "“The truth is — everything is just story.”",
-    },
-    {
-      title: "Something Knew",
-      imageUrl: "/book-covers/SomethingKnew.png",
-      description: "The System is Glitching",
-    },
-  ];
-
-  // helper: slugify book titles
   const slugify = (text) =>
     text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
 

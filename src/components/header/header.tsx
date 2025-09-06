@@ -1,8 +1,12 @@
 'use client';
 import styles from "./header.module.css";
 import { useEffect } from "react";
+import Link from "next/link";
 
-export default function Header() {
+export default function Header({ featuredBook }) {
+  const slugify = (text) =>
+    text.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+
   useEffect(() => {
     const handleWheel = (event) => {
       if (window.scrollY === 0 && event.deltaY > 0) {
@@ -21,18 +25,26 @@ export default function Header() {
   }, []);
   
   return (
-    <>
-      <div className={styles.header}>
-        <div className={styles.title}>
-          <h1 className={styles.titleText}>LINA</h1>
-          <h1 className={styles.titleText}><strong>LANE</strong></h1>
-          <h2 className={styles.subTitle}>AUTHOR</h2>
-          <a className={styles.books} href="#books">DISCOVER BOOKS</a>
-        </div>
-        <div className={styles.headerImage}>
-
-        </div>
+    <div className={styles.header}>
+      <div className={styles.title}>
+        <h1 className={styles.titleText}>LINA</h1>
+        <h1 className={styles.titleText}><strong>LANE</strong></h1>
+        <h2 className={styles.subTitle}>AUTHOR</h2>
+        <a className={styles.books} href="#books">DISCOVER BOOKS</a>
       </div>
-    </>
+
+      {featuredBook && (
+        <div className={styles.featuredBook}>
+          <Link href={`/book/${slugify(featuredBook.name)}`}>
+            <img
+              className={styles.featuredImage}
+              src={featuredBook.imageUrl}
+              alt={featuredBook.name}
+            />
+          </Link>
+          <span className={styles.featuredText}></span>
+        </div>
+      )}
+    </div>
   );
 }
