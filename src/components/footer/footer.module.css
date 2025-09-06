@@ -7,3 +7,9 @@
 .footerItem {
     margin: 2em;
 }
+
+@media only screen and (max-width: 650px) {
+  .footer {
+    justify-content: center;
+}
+}

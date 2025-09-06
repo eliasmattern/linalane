@@ -62,3 +62,8 @@
 .link:hover {
   color: #81d4fa;
 }
+
+.footer{
+  position: absolute;
+  bottom: 0;
+}

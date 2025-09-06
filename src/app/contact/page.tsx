@@ -1,4 +1,5 @@
 import styles from "./page.module.css";
+import Footer from "../../components/footer/footer";
 
 export default function ContactPage() {
   return (
@@ -28,6 +29,9 @@ export default function ContactPage() {
           <h2>Address</h2>
           <p>123 Modern St.<br />City, Country</p>
         </div>
+      </div>
+      <div className={styles.footer}>
+        <Footer />
       </div>
     </main>
   );
