@@ -16,12 +16,12 @@ export default function Books() {
   const books = [
     {
       title: "When the Loop Breaks",
-      imageUrl: "/books/whentheloopbreaks.png",
+      imageUrl: "/book-covers/whentheloopbreaks.png",
       description: "“The truth is — everything is just story.”",
     },
     {
       title: "Something Knew",
-      imageUrl: "/books/SomethingKnew.png",
+      imageUrl: "/book-covers/SomethingKnew.png",
       description: "The System is Glitching",
     },
   ];
