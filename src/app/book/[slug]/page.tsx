@@ -7,15 +7,15 @@ export const runtime = "nodejs";
 export const dynamic = "force-static";
 
 interface BookDetails {
-  longDescription: string
-  buyLink?: string
+  longDescription: string;
+  buyLink?: string;
 }
 
 interface Book {
-  title: string,
-  imageUrl: string,
-  description: string
-  details: BookDetails
+  title: string;
+  imageUrl: string;
+  description: string;
+  details: BookDetails;
 }
 
 const slugify = (text: string) =>
@@ -33,9 +33,8 @@ export async function generateStaticParams() {
   return books.map((b) => ({ slug: slugify(b.title) }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  params = await params 
-  const slug =  params.slug;
+export async function generateMetadata({ params }: any) {
+  const { slug } = await params; // ✅ await params
   const books = loadBooks();
   const book = books.find((b) => slugify(b.title) === slug);
 
@@ -53,9 +52,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BookPage({ params }: { params: { slug: string } }) {
-  params = await params 
-  const slug =  params.slug;
+export default async function BookPage({ params }: any) {
+  const { slug } = await params; // ✅ await params
   const books = loadBooks();
   const book = books.find((b) => slugify(b.title) === slug);
 
