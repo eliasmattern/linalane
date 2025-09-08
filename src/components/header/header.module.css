@@ -166,3 +166,30 @@
 
     }
 }
+
+@media (max-height: 499px) {
+
+    .title {
+        align-items: center;
+        text-align: center;
+        display: flex;
+        position: relative;
+        justify-content: center;
+    }
+
+    .titleText {
+        color: white;
+        font-size: 80px;
+        line-height: 0.9em;
+    }
+
+    .subTitle {
+        font-size: 45px;
+        line-height: 1em;
+    }
+
+    .books {
+        font-size: 20px;
+
+    }
+}

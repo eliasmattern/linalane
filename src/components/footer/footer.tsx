@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div className={styles.footer}>
       <p className={styles.footerItem}>© Lina Lane 2025</p>
-      <Link className={styles.footerItem} href={`/contact`}>Contact Me</Link>
+      <Link className={styles.footerItem} href={`/contact`}>Contact</Link>
     </div>
   );
 }
