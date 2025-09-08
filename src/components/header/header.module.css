@@ -169,13 +169,7 @@
 
 @media (max-height: 499px) {
 
-    .title {
-        align-items: center;
-        text-align: center;
-        display: flex;
-        position: relative;
-        justify-content: center;
-    }
+    
 
     .titleText {
         color: white;
